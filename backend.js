@@ -25,12 +25,17 @@ app.use(expressSession({
     secret: "express session secret",
     resave: false,
     saveUninitialized: false,
+    proxy : true, 
+    cookie : {
+        secure : true,
+        maxAge: 5184000000 
+    }
 }));
 
 const cors = require('cors')
 
 app.use(cors({
-  origin:['http://localhost:3002'],
+  origin:['http://localhost:3000'],
   methods:['GET','POST'],
   credentials: true
 }))
