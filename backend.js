@@ -36,7 +36,7 @@ app.use(expressSession({
 const cors = require('cors')
 
 app.use(cors({
-  origin:['http://localhost:3000'],
+  origin:['https://5fbb2c8f965c6c0008f21f2d--vigorous-newton-e76702.netlify.app'],
   methods:['GET','POST'],
   credentials: true
 }))
