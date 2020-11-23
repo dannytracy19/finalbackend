@@ -151,7 +151,7 @@ app.post('/preferences', (req, res) => {
 //     res.json(true);
 // });
 
-const port = 3030;
+const port = process.env.PORT || 3030;
 app.listen(port, () => {
     console.log("Tutorial1 up and running on port " + port);
 });
