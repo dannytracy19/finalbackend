@@ -30,7 +30,7 @@ app.use(expressSession({
 const cors = require('cors')
 
 app.use(cors({
-  origin:['http://localhost:3002'],
+  origin:['https://pedantic-bartik-3cd77c.netlify.app'],
   methods:['GET','POST'],
   credentials: true
 }))
