@@ -25,12 +25,22 @@ app.use(expressSession({
     secret: "express session secret",
     resave: false,
     saveUninitialized: false,
+    proxy : true, 
+    cookie : {
+        secure : true,
+        maxAge: 5184000000,
+        sameSite: "None"
+    }
 }));
 
 const cors = require('cors')
 
 app.use(cors({
+<<<<<<< HEAD
   origin:['https://pedantic-bartik-3cd77c.netlify.app'],
+=======
+  origin:['https://5fbb2c8f965c6c0008f21f2d--vigorous-newton-e76702.netlify.app'],
+>>>>>>> e1ae125f314b560adb4a9ea54d9f4229188e0388
   methods:['GET','POST'],
   credentials: true
 }))
