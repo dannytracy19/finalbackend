@@ -36,7 +36,7 @@ app.use(expressSession({
 const cors = require('cors')
 
 app.use(cors({
-  origin:['https://meet-up-now.netlify.app/'],
+  origin:['https://meet-up-now.netlify.app'],
   methods:['GET','POST'],
   credentials: true
 }))
