@@ -37,6 +37,7 @@ Meetup.next_id=Meetup.getAllIDs().reduce((max, next_id) => {
     return max;
 }, -1) + 1;
 
+//random comment
 Meetup.create = (address1, address2, meettype, stars, price) => {
     //finding max id, add 1 to it to get new id
     console.log("in meetup function")
