@@ -64,12 +64,14 @@ app.get('/logout', (req, res) => {
 
 
 
-const user_data = require('data-store')({ path: process.cwd() + '/user_data/users.json' });
+
 
 //authenticate the user
 app.post('/login', (req, res) => {
     let authenticated = false;
     console.log("checking")
+
+    let user_data = require('data-store')({ path: process.cwd() + '/user_data/users.json' });
 
     let {email, password} = req.body;
 
@@ -79,25 +81,37 @@ app.post('/login', (req, res) => {
 
     //checking the credentials
     for (const user in users_db){
+
         const user_email = users_db[user].email;
         const user_password = users_db[user].password;
+
+
+        /*
+        if (email == user_email){
+            console.log("MATCH!")
+            console.log("on email..." + user_email)
+            console.log("the user's email is " + email)
+
+            console.log("on password..." + user_password)
+            console.log("the user's password is " + password)
+        }
+        */
 
         if ((email == user_email) && (password == user_password)){
 
             console.log("auth!")
             req.session.user = email;
             
-            // session.email = req.session.user;
+            
 
 
             res.send("authenticated!")
 
-            console.log("in the post")
-            console.log(req.session)
+            //console.log(req.session)
 
             
             return;
-        }
+        } 
         
     }
 
@@ -109,8 +123,30 @@ app.post('/login', (req, res) => {
 
 
 app.post('/signuppage', (req, res) => {
+    let user_data = require('data-store')({ path: process.cwd() + '/user_data/users.json' });
+
     let {email, password, preferences} = req.body;
-    console.log(req.body);
+    
+    let users_db = user_data.data
+
+
+    
+    for (let user in users_db){
+        console.log("in loop");
+        
+        let existing_email = users_db[user].email;
+        console.log("an existing email is..." + users_db[user].email);
+        console.log("the incoming email is " + req.body.email);
+
+        if (existing_email == req.body.email){
+            res.status(400).send("Email already exists!")
+            return;
+        }
+        
+
+    }
+    
+
     
     let u = User.create(email, password, preferences);
     if (u==null){
