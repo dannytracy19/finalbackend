@@ -102,9 +102,6 @@ app.post('/login', (req, res) => {
             console.log("auth!")
             req.session.user = email;
             
-            
-
-
             res.send("authenticated!")
 
             //console.log(req.session)
@@ -132,11 +129,11 @@ app.post('/signuppage', (req, res) => {
 
     
     for (let user in users_db){
-        console.log("in loop");
+        //console.log("in loop");
         
         let existing_email = users_db[user].email;
-        console.log("an existing email is..." + users_db[user].email);
-        console.log("the incoming email is " + req.body.email);
+        //console.log("an existing email is..." + users_db[user].email);
+        //console.log("the incoming email is " + req.body.email);
 
         if (existing_email == req.body.email){
             res.status(400).send("Email already exists!")
@@ -160,7 +157,7 @@ app.post('/signuppage', (req, res) => {
 //meetups
 app.post('/meetups', (req, res) => {
     let {address1, address2, meettype, stars, price} = req.body;
-    console.log(req.body);
+    //console.log(req.body);
     
     let m = Meetup.create(address1, address2, meettype, stars, price);
     if (m==null){
